@@ -6,7 +6,7 @@
  *
  * JSON (JavaScript Object Notation) is a lightweight data-interchange
  * format. It is easy for humans to read and write. It is easy for machines
- * to parse and generate. It is based on a subset of the JavaScript
+ * to parse and generate. It is baseded on a subset of the JavaScript
  * Programming Language, Standard ECMA-262 3rd Edition - December 1999.
  * This feature can also be found in  Python. JSON is a text format that is
  * completely language independent but uses conventions that are familiar

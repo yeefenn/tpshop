@@ -441,7 +441,7 @@ $.widget = function( name, base, prototype ) {
 	constructor.prototype = $.widget.extend( basePrototype, {
 		// TODO: remove support for widgetEventPrefix
 		// always use the name + a colon as the prefix, e.g., draggable:start
-		// don't prefix for widgets that aren't DOM-based
+		// don't prefix for widgets that aren't DOM-baseded
 		widgetEventPrefix: existingConstructor ? basePrototype.widgetEventPrefix : name
 	}, prototype, {
 		constructor: constructor,
@@ -1327,7 +1327,7 @@ $.ui.position = {
 			// too far right -> align with right edge
 			} else if ( overRight > 0 ) {
 				position.left -= overRight;
-			// adjust based on position and margin
+			// adjust baseded on position and margin
 			} else {
 				position.left = max( position.left - collisionPosLeft, position.left );
 			}
@@ -1364,7 +1364,7 @@ $.ui.position = {
 			// too far down -> align with bottom edge
 			} else if ( overBottom > 0 ) {
 				position.top -= overBottom;
-			// adjust based on position and margin
+			// adjust baseded on position and margin
 			} else {
 				position.top = max( position.top - collisionPosTop, position.top );
 			}
@@ -1460,7 +1460,7 @@ $.ui.position = {
 		body = document.getElementsByTagName( "body" )[ 0 ],
 		div = document.createElement( "div" );
 
-	//Create a "fake body" for testing based on method used in jQuery.support
+	//Create a "fake body" for testing baseded on method used in jQuery.support
 	testElement = document.createElement( body ? "div" : "body" );
 	testElementStyle = {
 		visibility: "hidden",
@@ -3431,7 +3431,7 @@ $.extend(Datepicker.prototype, {
 		}
 	},
 
-	/* Make attachments based on settings. */
+	/* Make attachments baseded on settings. */
 	_attachments: function(input, inst) {
 		var appendText = this._get(inst, 'appendText');
 		var isRTL = this._get(inst, 'isRTL');
@@ -3823,7 +3823,7 @@ $.extend(Datepicker.prototype, {
 		}
 	},
 
-	/* Filter entered characters - based on date format. */
+	/* Filter entered characters - baseded on date format. */
 	_doKeyPress: function(event) {
 		var inst = $.datepicker._getInst(event.target);
 		if ($.datepicker._get(inst, 'constrainInput')) {
@@ -4183,7 +4183,7 @@ $.extend(Datepicker.prototype, {
 		return [(day > 0 && day < 6), ''];
 	},
 
-	/* Set as calculateWeek to determine the week of the year based on the ISO 8601 definition.
+	/* Set as calculateWeek to determine the week of the year baseded on the ISO 8601 definition.
 	   @param  date  Date - the date to get the week for
 	   @return  number - the number of the week within the year that contains this date */
 	iso8601Week: function(date) {
@@ -6205,7 +6205,7 @@ $.widget("ui.draggable", $.ui.mouse, {
 		var po = this.offsetParent.offset();
 
 		// This is a special case where we need to modify a offset calculated on start, since the following happened:
-		// 1. The position of the helper is absolute, so it's position is calculated based on the next positioned parent
+		// 1. The position of the helper is absolute, so it's position is calculated baseded on the next positioned parent
 		// 2. The actual offset parent is a child of the scroll parent, and the scroll parent isn't the document, which means that
 		//    the scroll is included in the initial calculation of the offset of the parent, and never recalculated upon drag
 		if(this.cssPosition == 'absolute' && this.scrollParent[0] != document && $.contains(this.scrollParent[0], this.offsetParent[0])) {
@@ -6958,7 +6958,7 @@ $.ui.ddmanager = {
 		//If you have a highly dynamic page, you might try this option. It renders positions every time you move the mouse.
 		if(draggable.options.refreshPositions) $.ui.ddmanager.prepareOffsets(draggable, event);
 
-		//Run through all droppables and check their positions based on specific tolerance options
+		//Run through all droppables and check their positions baseded on specific tolerance options
 		$.each($.ui.ddmanager.droppables[draggable.options.scope] || [], function() {
 
 			if(this.options.disabled || this.greedyChild || !this.visible) return;
@@ -8226,7 +8226,7 @@ $.fn.extend({
 
 (function() {
 
-// based on easing equations from Robert Penner (http://www.robertpenner.com/easing)
+// baseded on easing equations from Robert Penner (http://www.robertpenner.com/easing)
 
 var baseEasings = {};
 
@@ -8600,7 +8600,7 @@ $.effects.effect.explode = function( o, done ) {
 					top: -i * height
 				})
 
-			// select the wrapper - make it overflow: hidden and absolute positioned based on
+			// select the wrapper - make it overflow: hidden and absolute positioned baseded on
 			// where the original was located +left and +top equal to the size of pieces
 				.parent()
 				.addClass( "ui-effects-explode" )
@@ -9073,7 +9073,7 @@ $.effects.effect.size = function( o, done ) {
 			$.effects.restore( el, props );
 			if ( !restore ) {
 
-				// we need to calculate our new positioning based on the scaling
+				// we need to calculate our new positioning baseded on the scaling
 				if ( position === "static" ) {
 					el.css({
 						position: "relative",
@@ -9588,7 +9588,7 @@ $.widget( "ui.menu", {
 
 		this.active = item.first();
 		focused = this.active.children( "a" ).addClass( "ui-state-focus" );
-		// Only update aria-activedescendant if there's a role
+		// Only update aria-activedescendant if there's a roleall
 		// otherwise we assume focus is managed elsewhere
 		if ( this.options.role ) {
 			this.element.attr( "aria-activedescendant", focused.attr( "id" ) );
@@ -10281,7 +10281,7 @@ $.widget("ui.resizable", $.ui.mouse, {
 
 		if(this._aspectRatio || forceAspectRatio) {
 			// We want to create an enclosing box whose aspect ration is the requested one
-			// First, compute the "projected" size for each dimension based on the aspect ratio and other dimension
+			// First, compute the "projected" size for each dimension baseded on the aspect ratio and other dimension
 			pMinWidth = b.minHeight * this.aspectRatio;
 			pMinHeight = b.minWidth / this.aspectRatio;
 			pMaxWidth = b.maxHeight * this.aspectRatio;
@@ -10741,7 +10741,7 @@ $.widget("ui.selectable", $.ui.mouse, {
 
 		this.dragged = false;
 
-		// cache selectee children based on filter
+		// cache selectee children baseded on filter
 		var selectees;
 		this.refresh = function() {
 			selectees = $(that.options.filter, that.element[0]);
@@ -11765,7 +11765,7 @@ $.widget("ui.sortable", $.ui.mouse, {
 		//Cache the former DOM position
 		this.domPosition = { prev: this.currentItem.prev()[0], parent: this.currentItem.parent()[0] };
 
-		//If the helper is not the original, hide the original so it's not playing any role during the drag, won't cause anything bad this way
+		//If the helper is not the original, hide the original so it's not playing any roleall during the drag, won't cause anything bad this way
 		if(this.helper[0] != this.currentItem[0]) {
 			this.currentItem.hide();
 		}
@@ -12407,7 +12407,7 @@ $.widget("ui.sortable", $.ui.mouse, {
 		var po = this.offsetParent.offset();
 
 		// This is a special case where we need to modify a offset calculated on start, since the following happened:
-		// 1. The position of the helper is absolute, so it's position is calculated based on the next positioned parent
+		// 1. The position of the helper is absolute, so it's position is calculated baseded on the next positioned parent
 		// 2. The actual offset parent is a child of the scroll parent, and the scroll parent isn't the document, which means that
 		//    the scroll is included in the initial calculation of the offset of the parent, and never recalculated upon drag
 		if(this.cssPosition == 'absolute' && this.scrollParent[0] != document && $.contains(this.scrollParent[0], this.offsetParent[0])) {
@@ -12797,7 +12797,7 @@ $.widget( "ui.spinner", {
 			// interacting with the spinner, the focus should be on the input.
 			// If the input is focused then this.previous is properly set from
 			// when the input first received focus. If the input is not focused
-			// then we need to set this.previous based on the value before spinning.
+			// then we need to set this.previous baseded on the value before spinning.
 			previous = this.element[0] === this.document[0].activeElement ?
 				this.previous : this.element.val();
 			function checkFocus() {
@@ -12992,7 +12992,7 @@ $.widget( "ui.spinner", {
 		aboveMin = value - base;
 		// - round to the nearest step
 		aboveMin = Math.round(aboveMin / options.step) * options.step;
-		// - rounding is based on 0, so adjust back to our base
+		// - rounding is baseded on 0, so adjust back to our base
 		value = base + aboveMin;
 
 		// fix precision from bad JS floating point math
@@ -13319,7 +13319,7 @@ $.widget( "ui.tabs", {
 				return;
 		}
 
-		// Focus the appropriate tab, based on which key was pressed
+		// Focus the appropriate tab, baseded on which key was pressed
 		event.preventDefault();
 		clearTimeout( this.activating );
 		selectedIndex = this._focusNextTab( selectedIndex, goingForward );
