@@ -25,10 +25,25 @@
                     <input type="text" name="based_action" size="40" class="inpMain" />
                 </td>
             </tr>
+<!--            <tr>-->
+<!--                <td width="100" align="right">权限路径</td>-->
+<!--                <td>-->
+<!--                    <input type="text" name="based_url" size="40" class="inpMain" />-->
+<!--                </td>-->
+<!--            </tr>-->
             <tr>
-                <td width="100" align="right">权限路径</td>
+                <td width="100" align="right">权限所属分类</td>
                 <td>
-                    <input type="text" name="based_url" size="40" class="inpMain" />
+                    <select name="based_pid">
+                        <option value="0">顶级</option>
+                        {foreach $res as $key=>$vo }
+                        {if $vo['based_pid'] eq '0' }
+                        <option value="{$vo['based_id']}"> {$vo['based_name']}</option>
+                        {elseif $vo['based_pid'] neq '0' /}
+                        <option value="{$vo['based_id']}">{:str_repeat("—",$vo.level).$vo.based_name}</option>
+                        {/if}
+                        {/foreach}
+                    </select>
                 </td>
             </tr>
             <tr>

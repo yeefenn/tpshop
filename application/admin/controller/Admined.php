@@ -23,6 +23,7 @@ class Admined extends controller
         return view('add',['res'=>$res]);
     }
     public function add_do(){
+//        config('debug',false);
         $data=Request::param();
 //        dump($data);
         $admin=new admin();
@@ -37,5 +38,19 @@ class Admined extends controller
             $this->error('添加失败');
         }
     }
+    public function find(){
+        config('debug',false);
+        $data=Request::param();
+        $admin=new Admin();
+        $res=$admin->find_name($data['admin_name']);
+//        dump($res);
+        if($res){
+            echo json_encode(['status'=>0,'msg'=>'no']);
+        }else{
+            echo json_encode(['status'=>1,'msg'=>'yes']);
+        }
+
+    }
+
 
 }

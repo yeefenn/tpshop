@@ -68,7 +68,7 @@ $(function(){
                     validated.admin_name = true;
                 } else {
                     obj.css({"color":"red"});
-                    obj.val(admin_name+'用户名不存在');
+                    obj.val(admin_name+'不存在');
                     validated.user_account =false;
                 }
             },

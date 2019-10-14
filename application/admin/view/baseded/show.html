@@ -15,7 +15,13 @@
         </tr>
         {foreach $res as $key=>$vo }
         <tr>
-            <td align="left">{$vo['based_name']}</td>
+            <td align="left">
+                {if $vo['based_pid'] eq '0' }
+                {$vo['based_name']}
+                {elseif $vo['based_pid'] neq '0' /}
+                {:str_repeat("—",$vo.level).$vo.based_name}
+                {/if}
+            </td>
             <td>{$vo['based_controller']}</td>
             <td>{$vo['based_action']}</td>
             <td>{$vo['based_url']}</td>
