@@ -14,6 +14,14 @@ class Admin extends Model{
         $res=Db::name('admin')->where('admin_pwd',$data)->find();
         return $res;
     }
+    public function show(){
+        $res=Db::name('admin')->select();
+        return $res;
+    }
+    public function insert($data){
+        $res=Db::name('admin')->insert($data);
+        return $res;
+    }
 
 
 }
