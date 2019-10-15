@@ -3,7 +3,7 @@
 namespace app\admin\service;
 use think\Model;
 
-class Cat extends Model
+class Cat
 {
     //查询所有分类并排序
     public function orderCate($cate, $pid=0, $i = 0)

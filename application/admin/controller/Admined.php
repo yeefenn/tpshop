@@ -9,6 +9,15 @@ class Admined extends controller
 {
     public function show(){
         $res = Admin::select();
+
+        foreach ($res as $k=>$v){
+            $arr=explode(',',$v['role_id']);
+            foreach ($arr as $val=>$key){
+                $res=Admin::select();
+            }
+            dump($res);
+        }
+        dump($res);exit;
         return view('show',['res'=>$res]);
     }
     public function add(){
@@ -27,7 +36,7 @@ class Admined extends controller
 //            echo json_encode(['status'=>0,'msg'=>'no']);
 //        }
 
-        config('debug',false);
+//        config('debug',false);
         $data=Request::param();
         $role_id=implode(',',$data['role_id']);
         $admin = new Admin();
@@ -36,10 +45,15 @@ class Admined extends controller
             'role_id'=>$role_id
         ]);
         if($res){
-            echo json_encode(['status'=>1,'msg'=>'ok']);
+            $this->success('添加成功', 'show');
         }else{
-            echo json_encode(['status'=>0,'msg'=>'no']);
+            $this->error('添加失败');
         }
+//        if($res){
+//            echo json_encode(['status'=>1,'msg'=>'ok']);
+//        }else{
+//            echo json_encode(['status'=>0,'msg'=>'no']);
+//        }
     }
     public function find(){
         config('debug',false);
