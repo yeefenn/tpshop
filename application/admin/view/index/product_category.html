@@ -12,28 +12,22 @@
             <th align="left">分类描述</th>
             <th align="left">分类导航状态</th>
             <th align="left">分类价格区间</th>
-            <th align="left">分类所属</th>
             <th width="60" align="center">分类排序</th>
             <th width="80" align="center">操作</th>
         </tr>
         {foreach $res as $key=>$vo }
         <tr>
-            <td align="left">{$vo['cate_name']}</td>
+            <td align="left">
+                {if $vo['cate_pid'] eq '0' }
+                {$vo['cate_name']}
+                {elseif $vo['cate_pid'] neq '0' /}
+                {:str_repeat("—",$vo.level).$vo.cate_name}
+                {/if}
+            </td>
             <td>{$vo['cate_status']}</td>
             <td>{$vo['cate_des']}</td>
             <td>{$vo['cate_by_status']}</td>
             <td>{$vo['cate_price']}</td>
-            <td>
-                {if $vo['cate_pid'] eq '0' }
-                {$vo['cate_name']}
-                {elseif $vo['cate_pid'] neq '0' /}
-                {foreach $res as $key=>$v}
-                {if $vo['cate_pid'] eq $v['cate_id']}
-                {$v['cate_name']}
-                {/if}
-                {/foreach}
-                {/if}
-            </td>
             <td align="center">{$vo['cate_order']}</td>
             <td align="center"><a href="product_category.php?rec=edit&cat_id=1">编辑</a> | <a href="product_category.php?rec=del&cat_id=1">删除</a></td>
         </tr>

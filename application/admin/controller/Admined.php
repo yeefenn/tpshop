@@ -1,55 +1,56 @@
 <?php
 namespace app\admin\controller;
-use app\admin\model\role;
+use app\admin\model\Role;
 use think\Controller;
-use app\admin\model\admin;
+use app\admin\model\Admin;
 use think\facade\Request;
 
 class Admined extends controller
 {
     public function show(){
-        $admin=new admin();
-        $res=$admin->select();
-//        dump($res);
-//        exit;
+        $res = Admin::select();
         return view('show',['res'=>$res]);
     }
     public function add(){
-        $role=new role();
-        $res=$role->select();
-//        $data=Request::param();
-//        dump($data);
 //        查所有角色
+        $res = Role::select();
         return view('add',['res'=>$res]);
     }
     public function add_do(){
 //        config('debug',false);
+//        $data=Request::param();
+//        $user = Admin::where('admin_pwd', $data['admin_pwd'])->find();
+//        $res=$user->admin_pwd;
+//        if($res){
+//            echo json_encode(['status'=>1,'msg'=>'ok']);
+//        }else{
+//            echo json_encode(['status'=>0,'msg'=>'no']);
+//        }
+
+        config('debug',false);
         $data=Request::param();
-//        dump($data);
-        $admin=new admin();
         $role_id=implode(',',$data['role_id']);
-//        dump($role_id);
-        $dataall=['admin_name'=>$data['admin_name'],'admin_email'=>$data['admin_email'],
-            'role_id'=>$role_id];
-        $res=$admin->insert($dataall);
+        $admin = new Admin();
+        $res=$admin->save([
+            'admin_name'=>$data['admin_name'],'admin_email'=>$data['admin_email'],
+            'role_id'=>$role_id
+        ]);
         if($res){
-            $this->success('添加成功', 'admined/show');
+            echo json_encode(['status'=>1,'msg'=>'ok']);
         }else{
-            $this->error('添加失败');
+            echo json_encode(['status'=>0,'msg'=>'no']);
         }
     }
     public function find(){
         config('debug',false);
         $data=Request::param();
-        $admin=new Admin();
-        $res=$admin->find_name($data['admin_name']);
-//        dump($res);
+        $res = Admin::where('admin_name', $data['admin_name'])->find();
+//        dump($res);exit;
         if($res){
             echo json_encode(['status'=>0,'msg'=>'no']);
         }else{
             echo json_encode(['status'=>1,'msg'=>'yes']);
         }
-
     }
 
 

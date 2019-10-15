@@ -6,7 +6,7 @@ var validated = {
 };
 $(function(){
     //增加管理员验证
-    var register = $('input[name=submit]');
+    var register = $('input[name=putt]');
     var role_id = $('input[name=role_id]');
     register.click(function() {
         // alert('sdf');
@@ -15,49 +15,50 @@ $(function(){
             //发送ajax插入
             // return true;
 
-            // $.ajax({
-            //     type: "post",
-            //     url: "add_do",
-            //     data: {
-            //         admin_name: admin_name,
-            //         admin_email:admin_email,
-            //         role_id:role_id
-            //
-            //     }, //携带的参数
-            //     dataType: 'json',
-            //     beforeSend: function () {
-            //         obj.css({"color":"blue"});
-            //         obj.val('请求中');
-            //     },
-            //     success: function (res) {
-            //         if (res.status == 1) {
-            //             alert(添加成功);
-            //             location.href="show";
-            //             return true;
-            //         } else {
-            //             location.href="add";
-            //             alert(添加失败);
-            //             return false;
-            //         }
-            //     },
-            //     error: function () {
-            //         location.href="add";
-            //         alert(网络异常);
-            //         return false;
-            //     }
-            // });
+            $.ajax({
+                type: "post",
+                url: "Admined/add_do",
+                data: {
+                    admin_name: admin_name,
+                    admin_email:admin_email,
+                    role_id:role_id
+
+                }, //携带的参数
+                dataType: 'json',
+                beforeSend: function () {
+                    obj.css({"color":"blue"});
+                    obj.val('请求中');
+                },
+                success: function (res) {
+                    if (res.status == 1) {
+                        alert(添加成功);
+                        location.href="show";
+                        // return true;
+                    } else {
+                        alert(添加失败);
+                        location.href="add";
+                        // return false;
+                    }
+                },
+                error: function () {
+                    location.href="add";
+                    alert(网络异常);
+                    return false;
+                }
+            });
             // location.href="show";
-            return true;
+            // return true;
         }
         //点击提交按钮依次触发失去焦点再次验证
         $('input[name=admin_name]').trigger('blur');
         $('input[name=admin_pwd]').trigger('blur');
         $('input[name=admin_pwded]').trigger('blur');
         $('input[name=admin_email]').trigger('blur');
-        return false;
+        // return false;
     });
     //-------验证用户名-------
     $('input[name=admin_name]').blur(function(){
+
         var admin_name = $(this).val();
         var obj=$(this);
         //不能为空
@@ -94,6 +95,7 @@ $(function(){
                     obj.css({"color":"green"});
                     obj.val(admin_name);
                     validated.admin_name = true;
+                    return;
                 } else {
                     obj.css({"color":"red"});
                     obj.val(admin_name+'已存在');
@@ -136,6 +138,7 @@ $(function(){
         $(this).css({"color":"green"});
         $(this).val(admin_pwd);
         validated.admin_pwd = true;
+        return;
     });
 //    验证确认密码
     $('input[name=admin_pwded]').blur(function(){
@@ -159,6 +162,7 @@ $(function(){
         $(this).css({"color":"green"});
         $(this).val(admin_pwded);
         validated.admin_pwded = true;
+        return;
     });
 //    验证邮箱
     $('input[name=admin_email]').blur(function(){
@@ -183,5 +187,6 @@ $(function(){
         $(this).css({"color":"green"});
         $(this).val(admin_email);
         validated.admin_email = true;
+        return;
     });
 });

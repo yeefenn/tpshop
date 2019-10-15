@@ -1,21 +1,12 @@
 <?php
-namespace app\admin\model;
-use think\Model;
-use think\Db;
-class based extends Model
-{
-    public function select()
-    {
-        $res = Db::name('based')->select();
-        return $res;
-    }
 
-    public function insert($data)
-    {
-        $res = Db::name('based')->insert($data);
-        return $res;
-    }
-//    查询所有分类并排序
+namespace app\admin\service;
+//use app\admin\model\Based;
+use think\Model;
+
+class Base extends Model
+{
+    //查询所有分类并排序
     public function orderCate($cate, $pid=0, $i = 0)
     {
         $order = [];

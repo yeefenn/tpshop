@@ -32,9 +32,13 @@
                 <td align="right">上级分类</td>
                 <td>
                     <select name="cate_pid">
-                        <option value="0">无</option>
+                        <option value="0">顶级</option>
                         {foreach $res as $key=>$vo }
-                        <option value="{$vo['cate_id']}" class="cate_id">{$vo['cate_name']}</option>
+                        {if $vo['cate_pid'] eq '0' }
+                        <option value="{$vo['cate_id']}" >{$vo['cate_name']}</option>
+                        {elseif $vo['cate_pid'] neq '0' /}
+                        <option value="{$vo['cate_id']}">{:str_repeat("—",$vo.level).$vo.cate_name}</option>
+                        {/if}
                         {/foreach}
                     </select>
                 </td>
