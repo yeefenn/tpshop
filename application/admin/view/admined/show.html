@@ -7,15 +7,21 @@
     <h3><a href="{:url('add')}" class="actionBtn add">添加管理</a>管理员</h3>
     <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
         <tr>
+            <th align="center">编号</th>
             <th width="120" align="left">管理员名称</th>
-            <th align="left">管理角色</th>
-            <th align="left">管理邮箱</th>
+            <th align="center">管理角色</th>
+            <th align="center">管理邮箱</th>
             <th width="80" align="center">操作</th>
         </tr>
         {foreach $res as $key=>$vo }
         <tr>
+            <td align="left"> {$vo['admin_id']} </td>
             <td align="left">{$vo['admin_name']}</td>
-            <td>{$vo['role_id']}</td>
+            <td>
+                {foreach $vo->roles as $role }
+                {$role->role_name}
+                {/foreach}
+            </td>
             <td>{$vo['admin_email']}</td>
             <td align="center"><a href="product_category.php?rec=edit&cat_id=1">编辑</a> | <a href="product_category.php?rec=del&cat_id=1">删除</a></td>
         </tr>

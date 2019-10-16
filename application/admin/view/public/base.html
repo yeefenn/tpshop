@@ -26,46 +26,73 @@
                     <li class="noRight"><a href="module.html">DouPHP+</a></li>
                 </ul>
                 <ul class="navRight">
-                    <li class="M noLeft"><a href="JavaScript:void(0);">您好，admin</a>
+                    <li class="M noLeft"><a href="JavaScript:void(0);">
+
+                        欢迎，{:session("admin")["admin_name"]}
+                    </a>
                         <div class="drop mUser">
                             <a href="manager.php?rec=edit&id=1">编辑我的个人资料</a>
                             <a href="manager.php?rec=cloud_account">设置云账户</a>
                         </div>
                     </li>
-                    <li class="noRight"><a href="login.php?rec=logout">退出</a></li>
+                    <li class="noRight"><a href="{:url('Index/out')}">退出</a></li>
                 </ul>
             </div>
         </div>
     </div>
-    <!-- dcHead 结束 --> <div id="dcLeft"><div id="menu">
-    <ul class="top">
-        <li><a href="index.html"><i class="home"></i><em>管理首页</em></a></li>
-    </ul>
-    <ul>
-        <li><a href="system.html"><i class="system"></i><em>系统设置</em></a></li>
-        <li><a href="nav.html"><i class="nav"></i><em>自定义导航栏</em></a></li>
-        <li><a href="show.html"><i class="show"></i><em>首页幻灯广告</em></a></li>
-        <li><a href="page.html"><i class="page"></i><em>单页面管理</em></a></li>
-    </ul>
-    <ul>
-        <li class="cur"><a href="{:url('Index/cate')}"><i class="productCat"></i><em>商品分类</em></a></li>
-        <li><a href="product.html"><i class="product"></i><em>商品列表</em></a></li>
-    </ul>
-    <ul>
-        <li><a href="article_category.html"><i class="articleCat"></i><em>文章分类</em></a></li>
-        <li><a href="article.html"><i class="article"></i><em>文章列表</em></a></li>
-    </ul>
-    <ul class="bot">
-        <li><a href="backup.html"><i class="backup"></i><em>数据备份</em></a></li>
-        <li><a href="mobile.html"><i class="mobile"></i><em>手机版</em></a></li>
-        <li><a href="theme.html"><i class="theme"></i><em>设置模板</em></a></li>
-<!--        <li><a href="{:url('roleall/show')}"><i class="manager"></i><em>网站管理员</em></a></li>-->
-        <li><a href="{:url('Admined/show')}"><i class="manager"></i><em>网站管理员</em></a></li>
-        <li><a href="{:url('Baseded/show')}"><i class="manager"></i><em>权限管理</em></a></li>
-<!--        <li><a href="{:url('baseded/show')}"><i class="manager"></i><em>权限管理</em></a></li>-->
-        <li><a href="{:url('RoleAll/show')}"><i class="manager"></i><em>角色管理</em></a></li>
-    </ul>
-</div></div>
+
+
+    <div id="dcLeft"><div id="menu">
+        <ul class="top">
+            <li><a href="{:url('Index/index')}"><i class="home"></i><em>管理首页</em></a></li>
+        </ul>
+        <ul>
+            {foreach $meum as $key=>$val}
+            <li style="overflow: visible;">
+                <a href="javascript:void(0)">
+                    <i class="system"></i>
+                    <em>{$val.based_name}</em>
+                </a>
+                <ul>
+                    {foreach $val.son as $k=>$v}
+                    <li><a href="{:url('')}"><i></i><em>{$v.based_name}</em></a></li>
+                    {/foreach}
+                </ul>
+            </li>
+            {/foreach}
+        </ul>
+    </div></div>
+
+    <!--                        你好{$admin.admin_name}-->
+<!--    &lt;!&ndash; dcHead 结束 &ndash;&gt; <div id="dcLeft"><div id="menu">-->
+<!--    <ul class="top">-->
+<!--        <li><a href="{:url('Index/index')}"><i class="home"></i><em>管理首页</em></a></li>-->
+<!--    </ul>-->
+<!--    <ul>-->
+<!--        <li><a href="system.html"><i class="system"></i><em>系统设置</em></a></li>-->
+<!--        <li><a href="nav.html"><i class="nav"></i><em>自定义导航栏</em></a></li>-->
+<!--        <li><a href="show.html"><i class="show"></i><em>首页幻灯广告</em></a></li>-->
+<!--        <li><a href="page.html"><i class="page"></i><em>单页面管理</em></a></li>-->
+<!--    </ul>-->
+<!--    <ul>-->
+<!--        <li class="cur"><a href="{:url('Cated/cate')}"><i class="productCat"></i><em>商品分类</em></a></li>-->
+<!--        <li><a href="product.html"><i class="product"></i><em>商品列表</em></a></li>-->
+<!--    </ul>-->
+<!--    <ul>-->
+<!--        <li><a href="article_category.html"><i class="articleCat"></i><em>文章分类</em></a></li>-->
+<!--        <li><a href="article.html"><i class="article"></i><em>文章列表</em></a></li>-->
+<!--    </ul>-->
+<!--    <ul class="bot">-->
+<!--        <li><a href="backup.html"><i class="backup"></i><em>数据备份</em></a></li>-->
+<!--        <li><a href="mobile.html"><i class="mobile"></i><em>手机版</em></a></li>-->
+<!--        <li><a href="theme.html"><i class="theme"></i><em>设置模板</em></a></li>-->
+<!--&lt;!&ndash;        <li><a href="{:url('roleall/show')}"><i class="manager"></i><em>网站管理员</em></a></li>&ndash;&gt;-->
+<!--        <li><a href="{:url('Admined/show')}"><i class="manager"></i><em>网站管理员</em></a></li>-->
+<!--        <li><a href="{:url('Baseded/show')}"><i class="manager"></i><em>权限管理</em></a></li>-->
+<!--&lt;!&ndash;        <li><a href="{:url('baseded/show')}"><i class="manager"></i><em>权限管理</em></a></li>&ndash;&gt;-->
+<!--        <li><a href="{:url('RoleAll/show')}"><i class="manager"></i><em>角色管理</em></a></li>-->
+<!--    </ul>-->
+<!--</div></div>-->
 {/block}
 {block name="left"}{/block}
 {block name="main"}主要{/block}

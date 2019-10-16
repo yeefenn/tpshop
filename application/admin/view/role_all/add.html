@@ -17,8 +17,16 @@
                 <td width="100" align="right">角色权限</td>
                 <td>
                     {foreach $res as $key=>$vo }
+                    {if $vo['based_pid'] eq '0' }
                     <input type="checkbox" name="based_id[]" value="{$vo['based_id']}"/>{$vo['based_name']}
+                    {elseif $vo['based_pid'] neq '0' /}
+                    <input type="checkbox" name="based_id[]" value="{$vo['based_id']}"/>{:str_repeat("-",$vo.level).$vo.based_name}
+                    {/if}
                     {/foreach}
+
+
+
+
                 </td>
             </tr>
             <tr>

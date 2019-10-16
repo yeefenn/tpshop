@@ -6,11 +6,7 @@ class Admin extends Model{
     protected $pk = 'admin_id';
     public function roles()
     {
-
-
-            return $this->hasMany('Role','role_id');
-
-//        return $this->hasMany('Role','role_id');
+        return $this->belongsToMany('Role','admin_role','role_id','admin_id');
     }
 
 

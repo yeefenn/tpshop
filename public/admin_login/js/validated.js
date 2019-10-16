@@ -83,6 +83,7 @@ $(function(){
     //---------验证密码-------------
     $('input[name=admin_pwd]').blur(function(){
         var admin_pwd = $(this).val();
+        var admin_name=$('input[name=admin_name]').val();
         var obj=$(this);
         //不能为空
         if(admin_pwd == ''){
@@ -105,7 +106,8 @@ $(function(){
             type: "get",
             url: "login_do_pwd",
             data: {
-                admin_pwd: admin_pwd
+                admin_pwd: admin_pwd,
+                admin_name:admin_name
             }, //携带的参数
             dataType: 'json',
             beforeSend: function () {

@@ -14,7 +14,11 @@
         {foreach $res as $key=>$vo }
         <tr>
             <td align="left">{$vo['role_name']}</td>
-            <td>{$vo['based_id']}</td>
+            <td>
+                {foreach $vo->baseds as $based }
+                {$based->based_name}
+                {/foreach}
+            </td>
             <td align="center"><a href="product_category.php?rec=edit&cat_id=1">编辑</a> | <a href="product_category.php?rec=del&cat_id=1">删除</a></td>
         </tr>
         {/foreach}
